@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { useLeagueFetch } from './hooks/displayLeagues'
+import MainPage from './components/MainPage/MainPage'
+
 import './App.css';
 
 function App() {
+
+  // Fetches all the motorsport leagues
+  const [leagues, isLoading] = useLeagueFetch('https://www.thesportsdb.com/api/v1/json/1/all_leagues.php')
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        isLoading ?
+        <h1>Loading Motorsport Leagues...</h1>
+        :
+        <MainPage leagues={leagues} />
+      }
     </div>
   );
 }
