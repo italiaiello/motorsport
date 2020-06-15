@@ -1,8 +1,8 @@
 import React from 'react'
 
-const LeagueCard = ({ league }) => {
+const LeagueCard = ({ league, onLeagueSelect }) => {
     return (
-        <article className="leagueCard">
+        <article className="leagueCard" onClick={onLeagueSelect}>
             <p>{league.strLeague}</p>
         </article>
     )
