@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import LeagueCard from '../LeagueCard/LeagueCard'
 import SearchBar from '../SearchBar/SearchBar'
 
-const DisplayLeagues = ({ leagues, onLeagueSelect }) => {
+const DisplayLeagues = ({ leagues, onLeagueSelect, onRouteChange }) => {
 
     const [filteredLeagues, setFilteredLeagues] = useState(leagues)
 
@@ -18,7 +18,8 @@ const DisplayLeagues = ({ leagues, onLeagueSelect }) => {
             <article id="allLeagues">
                 {
                     filteredLeagues.map((league, i) => (
-                        <LeagueCard key={i} 
+                        <LeagueCard key={i}
+                                    id={i}
                                     league={league} 
                                     onLeagueSelect={onLeagueSelect}
                         />

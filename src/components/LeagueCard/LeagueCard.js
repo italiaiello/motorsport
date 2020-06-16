@@ -1,9 +1,9 @@
 import React from 'react'
 
-const LeagueCard = ({ league, onLeagueSelect }) => {
+const LeagueCard = ({ league, onLeagueSelect, id }) => {
     return (
-        <article className="leagueCard" onClick={onLeagueSelect}>
-            <p>{league.strLeague}</p>
+        <article className="leagueCard" data-id={id} onClick={onLeagueSelect}>
+            <p data-id={id}>{league.strLeague}</p>
         </article>
     )
 }

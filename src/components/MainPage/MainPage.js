@@ -1,20 +1,21 @@
 import React, { useState } from 'react'
-import { useLeagueFetch } from '../../hooks/displayLeagues'
+import { useLeagueFetch } from '../../hooks/fetchLeagues'
 import DisplayLeagues from '../DisplayLeagues/DisplayLeagues'
+import LeagueDetails from '../LeagueDetails/LeagueDetails'
 
 const MainPage = () => {
 
     // Fetches all the motorsport leagues
     const [leagues, isLoading] = useLeagueFetch('https://www.thesportsdb.com/api/v1/json/1/all_leagues.php')
-
+    
     // State
     const [route, setRoute] = useState('home')
+    const [leagueId, setLeagueId] = useState(0)
 
-    const onLeagueSelect = (league) => {
-        fetch(`https://www.thesportsdb.com/api/v1/json/1/search_all_teams.php?l=${league}`)
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(err => console.log(err))
+    const onLeagueSelect = (e) => {
+        const id = e.target.dataset.id
+        setLeagueId(parseInt(leagues[id].idLeague))
+        onRouteChange('leagueDetails')
     }
 
     const onRouteChange = (newRoute) => {
@@ -31,13 +32,13 @@ const MainPage = () => {
                 (
                     route === 'home' ?
                     <DisplayLeagues leagues={leagues} 
-                                onRouteChange={onRouteChange} 
                                 onLeagueSelect={onLeagueSelect}
+                                onRouteChange={onRouteChange}
                     />
                     :
                     (
                         route === 'leagueDetails' &&
-                        <h1>League Details</h1>
+                        <LeagueDetails leagueId={leagueId} />
 
                     )
 
