@@ -3,6 +3,8 @@
   text-align: center;
 }
 
+/* Display Leagues */
+
 #allLeagues {
   width: 80%;
   margin: 0 auto;
@@ -11,6 +13,8 @@
   justify-content: center;
   align-items: center;
 }
+
+/* League Card */
 
 .leagueCard {
   width: 25%;
@@ -26,4 +30,17 @@
 .leagueCard p {
   width: 85%;
   margin: 0 auto;
+}
+
+/* League Details */
+
+.banner {
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
 }

@@ -10,11 +10,17 @@ const LeagueDetails = ({ leagueId }) => {
                 <h1>Loading league details...</h1>
                 :
                 <article id="detailsContainer">
-                    <figure className="banner">
-                        <img src={leagueDetails.strBanner} />
-                    </figure>
-                    <h1>{leagueDetails.strLeague}</h1>
-                    <p>{leagueDetails.strDescriptionEN}</p>
+                    <article id="details">
+                        <figure className="banner">
+                            <img src={leagueDetails.strBanner} alt={`${leagueDetails.strLeague} banner`} />
+                        </figure>
+                        <h1>{leagueDetails.strLeague}</h1>
+                        <p>{leagueDetails.strDescriptionEN}</p>
+                    </article>
+                    <footer>
+                        <a href={`${leagueDetails.strWebsite}`} target="_blank"><button>Website</button></a>
+                        <a href={`${leagueDetails.strWebsite}`}><button>Facebook</button></a>
+                    </footer>
                 </article>
             }
         </section>
