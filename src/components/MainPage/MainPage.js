@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useLeagueFetch } from '../../hooks/fetchLeagues'
 import DisplayLeagues from '../DisplayLeagues/DisplayLeagues'
 import LeagueDetails from '../LeagueDetails/LeagueDetails'
+import Teams from '../Teams/Teams'
 
 const MainPage = () => {
 
@@ -37,8 +38,10 @@ const MainPage = () => {
                     />
                     :
                     (
-                        route === 'leagueDetails' &&
-                        <LeagueDetails leagueId={leagueId} />
+                        route === 'leagueDetails' ?
+                        <LeagueDetails leagueId={leagueId} onRouteChange={onRouteChange} />
+                        :
+                        <Teams />
 
                     )
 

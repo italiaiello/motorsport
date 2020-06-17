@@ -44,3 +44,90 @@
   width: 100%;
   height: auto;
 }
+
+.heading {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heading button {
+  position: absolute;
+  left: 10%;
+}
+
+#detailsContainer {
+  display:flex; 
+  flex-direction:column; 
+}
+
+#leagueDetails {
+  margin-bottom: 100px;
+  width: 60%;
+  margin: 0 auto;
+}
+
+#leagueDetails p {
+  line-height: 25px;
+  text-align: left;
+}
+
+#shortInfo {
+  display: flex;
+  justify-content: center;
+}
+
+#shortInfo article {
+  width: 30%;
+}
+
+#shortInfo article p {
+  text-align: center;
+}
+
+#showTeams {
+  width: 200px;
+  height: 50px;
+  margin: 20px auto;
+  margin-bottom: 40px;
+  cursor: pointer;
+  border: none;
+  background-color: black;
+  border-radius: 50px;
+  color: white;
+  transition: all .2s ease-in-out;
+}
+
+#showTeams:hover {
+  transform: scale(1.05);
+}
+
+#showTeams:active {
+  transform: scale(0.95);
+}
+
+/* Footer */
+
+footer {
+  background-color: #ccc;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+}
+
+footer a {
+  transition: all .2s ease-in-out;
+}
+
+footer a:hover {
+  transform: scale(1.1, 1.1);
+}
+
+footer a:active {
+  transform: scale(0.95, 0.95);
+}
+
