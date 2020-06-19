@@ -118,6 +118,46 @@
   transform: scale(0.95);
 }
 
+/* Teams */
+
+#allTeams {
+  width: 85%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.teamSelect {
+  width: 20%;
+  background-color: #ccc;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+
+.teamSelect:hover {
+  transform: scale(1.05);
+}
+
+.teamSelect:active {
+  transform: scale(0.95);
+}
+
+.teamBadge {
+  width: 50%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.teamBadge img {
+  width: 100%;
+  height: auto;
+}
+
 /* Footer */
 
 footer {
