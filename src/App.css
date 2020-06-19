@@ -25,6 +25,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.leagueCard:hover {
+  transform: scale(1.05)
+}
+
+.leagueCard:active {
+  transform: scale(0.95)
 }
 
 .leagueCard p {

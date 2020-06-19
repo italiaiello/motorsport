@@ -12,10 +12,12 @@ const MainPage = () => {
     // State
     const [route, setRoute] = useState('home')
     const [leagueId, setLeagueId] = useState(0)
+    const [leagueForTeams, setLeagueForTeams] = useState('')
 
     const onLeagueSelect = (e) => {
         const id = e.target.dataset.id
         setLeagueId(parseInt(leagues[id].idLeague))
+        setLeagueForTeams(leagues[id].strLeague)
         onRouteChange('leagueDetails')
     }
 
@@ -41,7 +43,7 @@ const MainPage = () => {
                         route === 'leagueDetails' ?
                         <LeagueDetails leagueId={leagueId} onRouteChange={onRouteChange} />
                         :
-                        <Teams />
+                        <Teams leagueForTeams={leagueForTeams} />
 
                     )
 

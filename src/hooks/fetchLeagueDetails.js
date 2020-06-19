@@ -11,7 +11,6 @@ export const useLeagueDetailsFetch = (url) => {
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                console.log(data.leagues[0])
                 setLeagueDetails(data.leagues[0])
                 setIsLoading(false)
             })
