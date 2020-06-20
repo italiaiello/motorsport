@@ -18,7 +18,7 @@ const DisplayTeams = ({ leagueForTeams, leagueId, route, onRouteChange }) => {
                 route === 'allTeams' ?
                 <Teams leagueForTeams={leagueForTeams} onTeamSelect={onTeamSelect} />
                 :
-                <TeamDetails leagueId={leagueId} teamId={teamId} />
+                <TeamDetails leagueId={leagueId} teamId={parseInt(teamId)} />
             }
             
         </section>

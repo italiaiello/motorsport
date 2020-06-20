@@ -25,6 +25,8 @@ const MainPage = () => {
         setRoute(newRoute)
     }
 
+    console.log(route)
+
     return (
         <article>
             {

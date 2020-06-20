@@ -2,20 +2,20 @@ import React from 'react'
 import { useTeamDetailsFetch } from '../../hooks/fetchTeamDetails'
 
 const TeamDetails = ({ leagueId, teamId }) => {
-
+    
     const [teamDetails, isLoading] = useTeamDetailsFetch(`https://www.thesportsdb.com/api/v1/json/1/lookup_all_teams.php?id=${leagueId}`)
 
     return (
         <section>
+            {
+                console.log(isLoading)
+            }
             {
                 isLoading ?
                 <h1>Loading team details...</h1>
                 :
                 <article>
                     <figure>
-                        {
-                            console.log(teamDetails)
-                        }
                         <img src={teamDetails[teamId].strTeamBanner} alt={`${teamDetails[teamId].strTeam}'s banner`} />
                     </figure>
                     <h2>{teamDetails[teamId].strTeam}</h2>

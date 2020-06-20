@@ -6,8 +6,9 @@ export const useTeamDetailsFetch = (url) => {
     const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
+
+        console.log('hello')
         setIsLoading(true)
-        
         fetch(url)
             .then(response => response.json())
             .then(data => {
@@ -15,12 +16,11 @@ export const useTeamDetailsFetch = (url) => {
                 setTeamDetails(data.teams)
                 setIsLoading(false)
             })
-            .catch(err => {
-                console.log(err)
-                setIsLoading(false)
-            })
-        
+            .catch(err => console.log(err))
+
     }, [url])
+
+    console.log(teamDetails)
 
     return [teamDetails, isLoading]
 }
