@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useLeagueFetch } from '../../hooks/fetchLeagues'
 import DisplayLeagues from '../DisplayLeagues/DisplayLeagues'
 import LeagueDetails from '../LeagueDetails/LeagueDetails'
 import DisplayTeams from '../DisplayTeams/DisplayTeams'
+import SignIn from '../SignIn/SignIn'
+import Register from '../Register/Register'
 
 const MainPage = () => {
 
@@ -10,7 +12,6 @@ const MainPage = () => {
     const [leagues, isLoading] = useLeagueFetch('https://www.thesportsdb.com/api/v1/json/1/all_leagues.php')
     
     // State
-    const [route, setRoute] = useState('home')
     const [leagueId, setLeagueId] = useState(0)
     const [leagueForTeams, setLeagueForTeams] = useState('')
 
@@ -21,11 +22,45 @@ const MainPage = () => {
         onRouteChange('leagueDetails')
     }
 
-    const onRouteChange = (newRoute) => {
+    const [route, setRoute] = useState('signin')
+
+    const onRouteChange = newRoute => {
         setRoute(newRoute)
     }
 
-    console.log(route)
+    useEffect(() => {
+        const token = window.sessionStorage.getItem('token')
+        if (token) {
+        fetch('http://localhost:3000/signin', {
+            method: 'post',
+            headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            if (data && data.id) {
+            fetch(`http://localhost:3000/profile/${data.id}`, {
+                method: 'get',
+                headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token
+                }
+            })
+            .then(response => response.json())
+            .then(user => {
+                if (user && user.email) {
+                    console.log(user)
+                    onRouteChange('home')
+                }
+            })
+            }
+        })
+        .catch(console.log)
+        }
+    }, [])
 
     return (
         <article>
@@ -35,20 +70,25 @@ const MainPage = () => {
                 <h1>Loading motorsport leagues...</h1>
                 :
                 (
-                    route === 'home' ?
-                    <DisplayLeagues leagues={leagues} 
-                                onLeagueSelect={onLeagueSelect}
-                                onRouteChange={onRouteChange}
-                    />
+                    route === 'signin' ?
+                    <SignIn onRouteChange={onRouteChange} />
                     :
                     (
-                        route === 'leagueDetails' ?
-                        <LeagueDetails leagueId={leagueId} onRouteChange={onRouteChange} />
+                        route === 'register' ?
+                        <Register onRouteChange={onRouteChange} />
+                        :route === 'home' ?
+                        <DisplayLeagues leagues={leagues} 
+                                    onLeagueSelect={onLeagueSelect}
+                                    onRouteChange={onRouteChange}
+                        />
                         :
-                        <DisplayTeams leagueForTeams={leagueForTeams} leagueId={leagueId} route={route} onRouteChange={onRouteChange} />
-
+                        (
+                            route === 'leagueDetails' ?
+                            <LeagueDetails leagueId={leagueId} onRouteChange={onRouteChange} />
+                            :
+                            <DisplayTeams leagueForTeams={leagueForTeams} leagueId={leagueId} route={route} onRouteChange={onRouteChange} />
+                        )
                     )
-
                 )
                 
             }
