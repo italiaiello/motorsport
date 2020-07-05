@@ -35,13 +35,13 @@ const Register = ({ onRouteChange }) => {
     }
 
     return (
-        <section id="register" className="form">
+        <section id="register" className="inputForm">
             <h1>Register</h1>
             <form onKeyPress={onEnterPress}>
-                <input name="name" type="text" placeholder="Enter name..." onChange={onNameChange} />
-                <input name="email" type="text" placeholder="Enter email..." onChange={onEmailChange} />
-                <input name="password" type="password" placeholder="Enter password..." onChange={onPasswordChange} />
-                <button onClick={onSubmitRegister}>Register</button>
+                <input className="formInput" name="name" type="text" placeholder="Enter name..." onChange={onNameChange} />
+                <input className="formInput" name="email" type="text" placeholder="Enter email..." onChange={onEmailChange} />
+                <input className="formInput" name="password" type="password" placeholder="Enter password..." onChange={onPasswordChange} />
+                <button className="submitButton" onClick={onSubmitRegister}>Submit</button>
             </form>
             <p onClick={() => onRouteChange('signin')}>Sign In</p>
         </section>

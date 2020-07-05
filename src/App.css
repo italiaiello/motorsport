@@ -3,6 +3,42 @@
   text-align: center;
 }
 
+/* Sign In AND Register */
+
+.inputForm {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputForm form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.formInput {
+  margin: 5px;
+  width: 50%;
+  border-radius: 20px;
+  border: 2px solid black;
+  padding: 10px 15px;
+  outline: none;
+}
+
+.submitButton {
+  background-color: black;
+  color: white;
+  width: 20%;
+  padding: 10px 0;
+  border-radius: 20px;
+  border: none;
+}
+
 /* Display Leagues */
 
 #allLeagues {
@@ -12,6 +48,17 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+
+/* SearchBar */
+
+#searchBarContainer {
+  width: 50%;
+  margin: 0 auto;
+}
+
+#searchBar {
+  width: 50%;
 }
 
 /* League Card */

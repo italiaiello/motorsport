@@ -4,6 +4,7 @@ const SearchBar = ({ onSearchChange }) => {
     return (
         <article id="searchBarContainer">
             <input  id="searchBar" 
+                    className="formInput"
                     type="text" 
                     placeholder="Enter a league..." 
                     onChange={onSearchChange} 

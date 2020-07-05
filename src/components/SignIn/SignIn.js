@@ -52,12 +52,12 @@ const SignIn = ({ onRouteChange }) => {
     }
 
     return (
-        <section id="signIn" className="form">
+        <section id="signIn" className="inputForm">
             <h1>Sign In</h1>
             <form onKeyPress={onEnterPress}>
                 <input className="formInput" type="text" name="email" placeholder="Enter email..." onChange={onEmailChange} />
                 <input className="formInput" type="password" name="password" placeholder="Enter password..." onChange={onPasswordChange} />
-                <button onClick={onSubmitSignIn}>Submit</button>
+                <button className="submitButton" onClick={onSubmitSignIn}>Submit</button>
             </form>
             <p onClick={() => onRouteChange('register')}>Register</p>
         </section>
